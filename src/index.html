@@ -1,59 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Pete's Pet Shop</title>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Pete's Pet Shop</title>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-push-2">
-          <h1 class="text-center">Pete's Pet Shop</h1>
-          <hr/>
-          <br/>
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+      <ul class="nav sidebar-nav">
+        <li class="sidebar-brand">
+          <a href="#">
+            Land Chain
+          </a>
+        </li>
+        <li>
+          <a href="#" id="nav-1">See All Lands</a>
+        </li>
+        <li>
+          <a href="#" id="nav-2">Approve</a>
+        </li>
+        <li>
+          <a href="#" id="nav-3">Check Ownership </a>
+        </li>
+        <li>
+          <a href="#" id="nav-4">Transfer</a>
+        </li>
+
+        <li>
+      </ul>
+    </nav>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+        <span class="hamb-top"></span>
+        <span class="hamb-middle"></span>
+        <span class="hamb-bottom"></span>
+      </button>
+      <div class="container welcome">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <h1>Welcome TO Land Chain App</h1>
+            <p>Check the menu to see What you can do With Land Chain</p>
+          </div>
         </div>
       </div>
-
-      <div id="petsRow" class="row">
-        <!-- PETS LOAD HERE -->
-      </div>
     </div>
+    <!-- /#page-content-wrapper -->
 
-    <div id="petTemplate" style="display: none;">
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="panel panel-default panel-pet">
-          <div class="panel-heading">
-            <h3 class="panel-title">Scrappy</h3>
-          </div>
-          <div class="panel-body">
-            <img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src="https://animalso.com/wp-content/uploads/2017/01/Golden-Retriever_6.jpg" data-holder-rendered="true">
-            <br/><br/>
-            <strong>Breed</strong>: <span class="pet-breed">Golden Retriever</span><br/>
-            <strong>Age</strong>: <span class="pet-age">3</span><br/>
-            <strong>Location</strong>: <span class="pet-location">Warren, MI</span><br/><br/>
-            <button class="btn btn-default btn-adopt" type="button" data-id="0">Adopt</button>
-          </div>
+  </div>
+
+  <div class="container">
+
+    <div id="content-1" class="text-center">
+      <ul class="lands">
+      </ul>
+    </div>
+    <div id="content-2" class="text-center">
+
+      <div class="first-form mm-5">
+        <h3>give the permession for someone for one land</h3>
+        <div class="form-group">
+          <label for="key">paste the public key here to approve this person</label>
+          <input type="text" class="form-control" id="key" placeholder="public key">
         </div>
+        <div class="form-group">
+          <label for="id">your land id:</label>
+          <input type="id" class="form-control" id="id" placeholder="land ID">
+        </div>
+        <button class="btn btn-primary">
+          aprrove
+        </button>
+      </div>
+
+      <hr>
+
+      <div class="second-form mm-5 ">
+        <h3>or give him the permession for all your lands</h3>
+        <div class="form-group">
+          <label for="key">paste the public key here to approve this person for all your lands</label>
+          <input type="text" class="form-control" id="key" placeholder="public key">
+        </div>
+        <button class="btn btn-primary">
+          aprrove for all
+        </button>
+      </div>
+      <hr>
+      <div class="third-form mm-5">
+        <h3>check who has the permession for one land</h3>
+        <div class="form-group">
+          <label for="id">put here the land id to see who has the permession for it</label>
+          <input type="text" class="form-control" id="id" placeholder="land ID">
+        </div>
+        <button class="btn btn-primary">
+          who is approved
+        </button>
+      </div>
+      <hr>
+      <div class="fourth-form mm-5">
+        <h3>check if someone is approved for all of your lands</h3>
+        <div class="form-group">
+          <label for="person">paste the public key for the person to check if he is approved for all of your lands</label>
+          <input type="text" class="form-control" id="person" placeholder="public key">
+        </div>
+        <button class="btn btn-primary">
+          is approved for all
+        </button>
       </div>
     </div>
+    <div id="content-3" class="text-center">
+      <div class="mm-5">
+        <h3>check how many lands someone has</h3>
+        <div class="form-group">
+          <label for="key">paste the public key here to approve this person</label>
+          <input type="text" class="form-control" id="key" placeholder="public key">
+        </div>
+        <button class="btn btn-primary">
+          lands balance
+        </button>
+      </div>
+      <hr>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/web3.min.js"></script>
-    <script src="js/truffle-contract.js"></script>
-    <script src="js/app.js"></script>
-  </body>
+      <div class="mm-5">
+        <h3>check if the land is exist</h3>
+        <div class="form-group">
+          <label for="id">enter the land id to check if it is exist</label>
+          <input type="text" class="form-control" id="id" placeholder="land ID">
+        </div>
+        <button class="btn btn-primary">
+          is land exist
+        </button>
+      </div>
+      <hr>
+
+      <div class="mm-5">
+        <h3>get the owner of land by it's ID</h3>
+        <div class="form-group">
+          <label for="id">enter the land id to get it's owner</label>
+          <input type="text" class="form-control" id="id" placeholder="land ID">
+        </div>
+        <button class="btn btn-primary">
+          Who is the owner
+        </button>
+      </div>
+      <hr>
+
+
+    </div>
+    <div id="content-4" class="text-center">
+      <div class="mm-5">
+        <h3>Transfer Ownership of a land from someone to someone else</h3>
+        <div class="form-group">
+          <label for="key">who is the old owner of the land</label>
+          <input type="text" class="form-control" id="key" placeholder="public key of the old owner">
+        </div>
+        <div class="form-group">
+          <label for="key">who is the new owner of the land</label>
+          <input type="text" class="form-control" id="key" placeholder="public key of the new owner">
+        </div>
+        <div class="form-group">
+          <label for="id">enter the land id to change it's owner</label>
+          <input type="text" class="form-control" id="id" placeholder="land ID">
+        </div>
+        <button class="btn btn-primary">
+          Transfer Ownership
+        </button>
+      </div>
+      <hr>
+
+      <div class="mm-5">
+          <h3>Transfer Ownership of a land from someone to someone else with safe Transfer</h3>
+          <div class="form-group">
+            <label for="key">who is the old owner of the land</label>
+            <input type="text" class="form-control" id="key" placeholder="public key of the old owner">
+          </div>
+          <div class="form-group">
+            <label for="key">who is the new owner of the land</label>
+            <input type="text" class="form-control" id="key" placeholder="public key of the new owner">
+          </div>
+          <div class="form-group">
+            <label for="id">enter the land id to change it's owner</label>
+            <input type="text" class="form-control" id="id" placeholder="land ID">
+          </div>
+          <button class="btn btn-primary">
+            safe Transfer Ownership
+          </button>
+        </div>
+        <hr>
+    </div>
+
+  </div>
+  <!-- /#wrapper -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+
 </html>
