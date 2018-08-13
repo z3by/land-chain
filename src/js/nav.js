@@ -19,12 +19,13 @@ $(document).ready(function () {
     content1.show();
     current = content1;
     $.getJSON('lands.json', (data) => {
+      $('.lands').html('');
       for (const land of data) {
         let li = document.createElement('li');
-        let location = document.createElement('h1');
-        let type = document.createElement('h3');
-        let area = document.createElement('h3');
-        let price = document.createElement('p');
+        let location = document.createElement('h2');
+        let type = document.createElement('h4');
+        let area = document.createElement('h4');
+        let price = document.createElement('h5');
         location.innerText = land.location;
         type.innerText = land.type;
         area.innerText = land.area + " yard";
@@ -35,7 +36,6 @@ $(document).ready(function () {
         li.appendChild(price);
         li.classList.add('card');
         $('.lands').append(li);
-        console.log(li);
       }
       })
   });

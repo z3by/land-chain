@@ -1,7 +1,7 @@
-const { assertRevert } = require('../../helpers/assertRevert');
+const { assertRevert } = require('../helpers/assertRevert');
 const { shouldBehaveLikeERC721BasicToken } = require('./ERC721BasicToken.behavior');
 const { shouldBehaveLikeMintAndBurnERC721Token } = require('./ERC721MintBurn.behavior');
-const { shouldSupportInterfaces } = require('../../introspection/SupportsInterface.behavior');
+const { shouldSupportInterfaces } = require('../introspection/SupportsInterface.behavior');
 const _ = require('lodash');
 
 const BigNumber = web3.BigNumber;

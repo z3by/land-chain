@@ -39,7 +39,7 @@ contract ERC721Token is SupportsInterfaceWithLookup, ERC721BasicToken, ERC721 {
     _registerInterface(InterfaceId_ERC721Enumerable);
     _registerInterface(InterfaceId_ERC721Metadata);
 
-    for (uint256 i; i < 100; i++) {
+    for (uint256 i; i < 12; i++) {
       _mint(msg.sender, i);
     }
 

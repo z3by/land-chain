@@ -2,6 +2,7 @@ App = {
   web3Provider: null,
   contracts: {},
   contractInstance: null,
+  msg: $('.msg'),
 
 
 
@@ -10,8 +11,6 @@ App = {
 
     return App.initWeb3();
   },
-
-
 
 
 
@@ -68,6 +67,7 @@ App = {
     $('.owner-by-id').click(App.ownerById);
     $('.transfer-btn').click(App.transfer);
     $('.safe-transfer-btn').click(App.safeTransfer);
+    $('.total-count').click(App.totalSupply);
   },
 
 
@@ -78,7 +78,10 @@ App = {
     const key = $('#approve-key').val();
     const id = $('#approve-id').val();
 
-    App.contractInstance.approve(key, id);
+    App.contractInstance.approve(key, id).then(() => {
+      App.setMessage();
+      App.msg.text('approved');
+    });
   },
 
 
@@ -89,7 +92,10 @@ App = {
   // approve someone to deal with all of your lands;
   approveAll: function () {
     const key = $('#approve-all-key').val();
-    App.contractInstance.setApprovalForAll(key, true);
+    App.contractInstance.setApprovalForAll(key, true).then(() => {
+      App.setMessage();
+      App.msg.text('approved for all');
+    });
   },
 
 
@@ -98,7 +104,9 @@ App = {
   isApproved: function () {
     const id = $('#is-approved-id').val();
 
-    App.contractInstance.getApproved(id);
+    App.contractInstance.getApproved(id).then(approved => {
+      console.log(approved);
+    });
 
   },
 
@@ -110,7 +118,15 @@ App = {
     const first = $('#is-approved-all-first').val();
     const second = $('#is-approved-all-second').val();
 
-    App.contractInstance.isApprovedForAll(first, second);
+    App.contractInstance.isApprovedForAll(first, second).then((approved) => {
+      App.setMessage();
+      if (approved) {
+        App.msg.text('this user is approved for all lands');
+      } else {
+        App.msg.text('this user is not approved for all lands');
+
+      }
+    });
 
   },
 
@@ -119,8 +135,10 @@ App = {
   //check how many lands someone has
   getBalance: function () {
     const key = $('#balance-key').val();
-    App.contractInstance.balanceOf(key);
-
+    App.contractInstance.balanceOf(key).then((balance) => {
+      App.setMessage();
+      App.msg.text(balance.toNumber());
+    });
 
 
   },
@@ -131,8 +149,24 @@ App = {
   // check if the land is exist
   isExist: function () {
     const id = $('#exist-id').val();
-    App.contractInstance.exist(id);
+    App.contractInstance.exists(id).then(exists => {
+      App.setMessage();
+      if (exists) {
+        App.msg.text('the records for this land is exists');
+      } else {
+        App.msg.text('the records for this land is not exists');
+
+      }
+    });
     
+  },
+
+
+  setMessage: function() {
+    App.msg.show();
+    setTimeout(() => {
+      App.msg.hide();
+    }, 3000);
   },
 
 
@@ -141,7 +175,18 @@ App = {
   // enter the land id to get it's owner
   ownerById: function () {
     const id = $('#owner-id').val();
-    App.contractInstance.ownerOf(id);
+
+    App.contractInstance.exists(id).then((exists) => {
+          if (exists) {
+            App.contractInstance.ownerOf(id).then((owner) => {
+              App.setMessage();
+              App.msg.text('the owner public key is ' + owner);
+            });
+          } else {
+            App.setMessage();
+            App.msg.text('no such land records');
+          }
+    });
   },
 
 
@@ -165,12 +210,23 @@ App = {
     const from = $('#safe-transfer-from').val();
     const to = $('#safe-transfer-to').val();
     const id = $('#safe-transfer-id').val();
-    App.contractInstance.safeTransferFrom(from, to, id);
-
-
+    App.contractInstance.safeTransferFrom(from, to, id).then(done => {
+      console.log(done);
+    });
   },
 
 
+
+
+  
+  // safe Transfer Ownership of a land from someone to someone else
+  
+  totalSupply: function () {
+    App.contractInstance.totalSupply().then(data => {
+      App.setMessage();
+      App.msg.text('there is ' + (data.toNumber()) + ' registerd lands');
+    });
+  },
 
 };
 
