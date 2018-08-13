@@ -32,19 +32,28 @@ App = {
 
   initContract: function () {
     $.getJSON('ERC721Token.json', function (data) {
+      // Get the necessary contract artifact file and instantiate it with truffle-contract
+      var LandArtifact = data;
+      App.contracts.Land = TruffleContract(LandArtifact);
 
-      //   // Get the necessary contract artifact file and instantiate it with truffle-contract
-      var AdoptionArtifact = data;
-      App.contracts.Adoption = TruffleContract(AdoptionArtifact);
+      // Set the provider for our contract
+      App.contracts.Land.setProvider(App.web3Provider);
 
-      //   // Set the provider for our contract
-      App.contracts.Adoption.setProvider(App.web3Provider);
+      App.createContractInstance();      
+      return App.bindEvents();
 
     });
-
-    return App.bindEvents();
   },
 
+
+
+  createContractInstance() {
+    App.contracts.Land.deployed()
+    .then(function (instance) {
+      App.contractInstance = instance;
+    });
+
+  },
 
 
 
@@ -69,7 +78,7 @@ App = {
     const key = $('#approve-key').val();
     const id = $('#approve-id').val();
 
-    console.log('approve', key, id);
+    App.contractInstance.approve(key, id);
   },
 
 
@@ -80,8 +89,7 @@ App = {
   // approve someone to deal with all of your lands;
   approveAll: function () {
     const key = $('#approve-all-key').val();
-
-    console.log('approve', key);
+    App.contractInstance.setApprovalForAll(key, true);
   },
 
 
@@ -90,7 +98,8 @@ App = {
   isApproved: function () {
     const id = $('#is-approved-id').val();
 
-    console.log('approve', id);
+    App.contractInstance.getApproved(id);
+
   },
 
 
@@ -98,9 +107,11 @@ App = {
 
   // check if someone is approved for all of your lands
   isApprovedForAll: function () {
-    const id = $('#is-approved-all-id').val();
+    const first = $('#is-approved-all-first').val();
+    const second = $('#is-approved-all-second').val();
 
-    console.log(id);
+    App.contractInstance.isApprovedForAll(first, second);
+
   },
 
 
@@ -108,8 +119,9 @@ App = {
   //check how many lands someone has
   getBalance: function () {
     const key = $('#balance-key').val();
-    console.log(key);
-    
+    App.contractInstance.balanceOf(key);
+
+
 
   },
 
@@ -119,8 +131,8 @@ App = {
   // check if the land is exist
   isExist: function () {
     const id = $('#exist-id').val();
-    console.log(id);
-
+    App.contractInstance.exist(id);
+    
   },
 
 
@@ -129,8 +141,7 @@ App = {
   // enter the land id to get it's owner
   ownerById: function () {
     const id = $('#owner-id').val();
-    console.log(id);
-
+    App.contractInstance.ownerOf(id);
   },
 
 
@@ -141,7 +152,8 @@ App = {
     const from = $('#transfer-from').val();
     const to = $('#transfer-to').val();
     const id = $('#transfer-id').val();
-    console.log(from, to, id);
+    App.contractInstance.transfer(from, to, id);
+    
 
   },
 
@@ -153,7 +165,7 @@ App = {
     const from = $('#safe-transfer-from').val();
     const to = $('#safe-transfer-to').val();
     const id = $('#safe-transfer-id').val();
-    console.log(from, to, id);
+    App.contractInstance.safeTransferFrom(from, to, id);
 
 
   },

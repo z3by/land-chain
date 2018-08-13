@@ -45,7 +45,7 @@
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
-    <div id="page-content-wrapper">
+    <div id="page-content-wrapper" class="fadeIn">
       <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
         <span class="hamb-top"></span>
         <span class="hamb-middle"></span>
@@ -58,6 +58,7 @@
             <p>Check the menu to see What you can do With Land Chain</p>
           </div>
         </div>
+        <img src="http://antimatterdesign.com/wp-content/uploads/2015/10/Ethereumpic11.jpg" alt="" id="hero">
       </div>
     </div>
     <!-- /#page-content-wrapper -->
@@ -66,13 +67,13 @@
 
   <div class="container">
 
-    <div id="content-1" class="text-center">
+    <div id="content-1" class="fadeIn">
       <ul class="lands">
       </ul>
     </div>
-    <div id="content-2" class="text-center">
+    <div id="content-2" class="fadeIn ">
 
-      <div class="first-form mm-5">
+      <div class="first-form mm-5 ">
         <h3>give the permession for someone for one land</h3>
         <div class="form-group">
           <label for="approve-key">paste the public key here to approve this person</label>
@@ -114,15 +115,19 @@
       <div class="fourth-form mm-5">
         <h3>check if someone is approved for all of your lands</h3>
         <div class="form-group">
-          <label for="is-approved-all-id">paste the public key for the person to check if he is approved for all of your lands</label>
-          <input type="text" class="form-control" id="is-approved-all-id" placeholder="public key">
+          <label for="is-approved-all-first">paste the public key for the person to check if he is approved for all of your lands</label>
+          <input type="text" class="form-control" id="is-approved-all-first" placeholder="owner's public key">
+        </div>
+        <div class="form-group">
+          <label for="is-approved-all-second">paste the public key for the person to check if he is approved for all of your lands</label>
+          <input type="text" class="form-control" id="is-approved-all-second" placeholder="operator's public key">
         </div>
         <button class="btn btn-primary is-approved-all">
           is approved for all
         </button>
       </div>
     </div>
-    <div id="content-3" class="text-center">
+    <div id="content-3" class="fadeIn">
       <div class="mm-5">
         <h3>check how many lands someone has</h3>
         <div class="form-group">
@@ -161,7 +166,7 @@
 
 
     </div>
-    <div id="content-4" class="text-center">
+    <div id="content-4" class="fadeIn">
       <div class="mm-5">
         <h3>Transfer Ownership of a land from someone to someone else</h3>
         <div class="form-group">

@@ -6,11 +6,11 @@ var ERC721Receiver = artifacts.require('./ERC721Receiver.sol')
 var ERC721Token = artifacts.require('./ERC721Token.sol')
 
 module.exports = function (deployer) {
-  deployer.deploy(ERC721)
-  deployer.deploy(ERC721Basic)
-  deployer.deploy(ERC721BasicToken)
-  deployer.deploy(ERC721Holder)
-  deployer.deploy(ERC721Receiver)
-  deployer.link(ERC721, ERC721Basic, ERC721BasicToken, ERC721Holder, ERC721Receiver, ERC721Token)
+  deployer.link(ERC721Token, ERC721)
+  deployer.link(ERC721Token, ERC721Basic)
+  deployer.link(ERC721Token, ERC721BasicToken)
+  deployer.link(ERC721Token, ERC721Holder)
+  deployer.link(ERC721Token, ERC721Receiver)
+
   deployer.deploy(ERC721Token, "land", "la")
 }
