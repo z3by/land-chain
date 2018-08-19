@@ -3,64 +3,50 @@ App = {
   contracts: {},
   contractInstance: null,
   msg: $('.msg'),
-
-
-
-
+  
+  
+  
+  
   init: function () {
-
+    
     return App.initWeb3();
   },
-
-
-
+  
+  
+  
+  // fill this function to initialize web3
+  // if the user is using meta mask so use the injected web3
+  // else fall back to ganache;
   initWeb3: function () {
-    // Is there an injected web3 instance?
-    if (typeof web3 !== 'undefined') {
-      App.web3Provider = web3.currentProvider;
-    } else {
-      // If no injected web3 instance is detected, fall back to Ganache
-      App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
-    }
-    web3 = new Web3(App.web3Provider);
-    return App.initContract();
+    //replace me;
   },
-
-
-
-
+  
+  
+  
+  // complete this function to intialize the contract
+  // you should get the contract artifacts and save it in the App.contracts object UP ^;
+  // use truffle to create useable version form the artifacts; 
   initContract: function () {
     $.getJSON('ERC721Token.json', function (data) {
-      // Get the necessary contract artifact file and instantiate it with truffle-contract
-      var LandArtifact = data;
-      App.contracts.Land = TruffleContract(LandArtifact);
-
-      // Set the provider for our contract
-      App.contracts.Land.setProvider(App.web3Provider);
-
-      App.createContractInstance();      
-      return App.bindEvents();
-
+      // replace me :)
     });
   },
-
-
-
+  
+  
+  // get the deployed version of the contract and create an instance
+  // save the instance in App.contractInstance so you can deal with the contract from web 3
   createContractInstance() {
-    App.contracts.Land.deployed()
-    .then(function (instance) {
-      App.contractInstance = instance;
-    });
-
+    
   },
-
-
-
-
+  
+  
+  
+  // you don't need to change anything here;
+  // this function is just to bind the functions to the user click events;
   bindEvents: function () {
     $('.approve').click(App.approve);
     $('.approve-all').click(App.approveAll);
-    $('.is-approved').click(App.isApproved);
+    $('.is-approved').click(App.getApproved);
     $('.is-approved-all').click(App.isApprovedForAll);
     $('.balance-btn').click(App.getBalance);
     $('.is-exist').click(App.isExist);
@@ -69,101 +55,10 @@ App = {
     $('.safe-transfer-btn').click(App.safeTransfer);
     $('.total-count').click(App.totalSupply);
   },
-
-
-
-
-  // approve someone to deal with one of your lands;
-  approve: function () {
-    const key = $('#approve-key').val();
-    const id = $('#approve-id').val();
-
-    App.contractInstance.approve(key, id).then(() => {
-      App.setMessage();
-      App.msg.text('approved');
-    });
-  },
-
-
-
-
-
-
-  // approve someone to deal with all of your lands;
-  approveAll: function () {
-    const key = $('#approve-all-key').val();
-    App.contractInstance.setApprovalForAll(key, true).then(() => {
-      App.setMessage();
-      App.msg.text('approved for all');
-    });
-  },
-
-
-
-  // check who has the permession for one land
-  isApproved: function () {
-    const id = $('#is-approved-id').val();
-
-    App.contractInstance.getApproved(id).then(approved => {
-      console.log(approved);
-    });
-
-  },
-
-
-
-
-  // check if someone is approved for all of your lands
-  isApprovedForAll: function () {
-    const first = $('#is-approved-all-first').val();
-    const second = $('#is-approved-all-second').val();
-
-    App.contractInstance.isApprovedForAll(first, second).then((approved) => {
-      App.setMessage();
-      if (approved) {
-        App.msg.text('this user is approved for all lands');
-      } else {
-        App.msg.text('this user is not approved for all lands');
-
-      }
-    });
-
-  },
-
-
-
-  //check how many lands someone has
-  getBalance: function () {
-    const key = $('#balance-key').val();
-    App.contractInstance.balanceOf(key).then((balance) => {
-      App.setMessage();
-      App.msg.text(balance.toNumber());
-    });
-
-
-  },
-
-
-
-
-  // check if the land is exist
-  isExist: function () {
-    const id = $('#exist-id').val();
-    App.contractInstance.exists(id).then(exists => {
-      App.setMessage();
-      if (exists) {
-        App.msg.text('the records for this land is exists');
-      } else {
-        App.msg.text('the records for this land is not exists');
-
-      }
-    });
-    
-  },
-
-
-  setMessage: function() {
+  
+  setMessage: function(text) {
     App.msg.show();
+    App.msg.text(text);
     setTimeout(() => {
       App.msg.hide();
     }, 3000);
@@ -171,67 +66,170 @@ App = {
 
 
 
+/*
+  give the permission for someone to deal with one land;
+  this function should @TODO        use the ABI instance that you got it to call the approve function that's located in the smart contract;
+  call the approve funct            ion in the smart contract and pass the user input and set the result as message;
 
-  // enter the land id to get it's owner
-  ownerById: function () {
-    const id = $('#owner-id').val();
+*/
+  approve: function () {
+    // get the land id and the public key from the user input;
+    const key = $('#approve-key').val();
+    const id = $('#approve-id').val();
 
-    App.contractInstance.exists(id).then((exists) => {
-          if (exists) {
-            App.contractInstance.ownerOf(id).then((owner) => {
-              App.setMessage();
-              App.msg.text('the owner public key is ' + owner);
-            });
-          } else {
-            App.setMessage();
-            App.msg.text('no such land records');
-          }
-    });
+    // replcae me :)
+
+  },
+
+
+
+/*
+  give the permission for someone to deal with all of your lands;
+  @TODO       use the ABI instance that you got it to call the setApprovalForAll function that's located in the smart contract;
+              call the approve function in the smart contract and pass the user input and set the result as message;
+*/
+  approveAll: function () {
+    //get the public key from the user input;
+    const key = $('#approve-all-key').val();
+
+    // replcae me :)
+  },
+
+
+
+/*
+  check who has the permession to deal with a specifec land;
+  @TODO       use the ABI instance that you got it to call the getApproved function that's located in the smart contract;
+              call the approve function in the smart contract and pass the user input and set the result as message;
+*/
+  getApproved: function () {
+    // get the land id forn the user input
+    const id = $('#is-approved-id').val();
+
+    // replace me :)
   },
 
 
 
 
-  // Transfer Ownership of a land from someone to someone else
+/*
+  check if someone has the permission to deal with a all the lands ownership of someone else;
+  @TODO       use the ABI instance that you got it to call the isApprovedForAll function that's located in the smart contract;
+              call the isApprovedForAll function in the smart contract and pass the user input and set the result as message;
+*/
+  isApprovedForAll: function () {
+    
+    const first = $('#is-approved-all-first').val();
+    const second = $('#is-approved-all-second').val();
+
+    // replace me :)
+  },
+
+
+
+
+
+/*
+  get the lands count of some one by his own public key;
+  @TODO       use the ABI instance that you got it to call the balanceOf function that's located in the smart contract;
+              call the balanceOf function in the smart contract and pass the user input and set the result as message;
+@HINT       you need to convert the value you get form the result to a integer number; 
+*/
+  getBalance: function () {
+    // get the public key form the user input
+    const key = $('#balance-key').val();
+
+    // replace me :)
+  },
+
+
+
+
+/*
+  check if the given land id is exist;
+  @TODO       use the ABI instance that you got it to call the exists function that's located in the smart contract;
+              call the exists function in the smart contract and pass the user input and set the result as message;
+*/
+  isExist: function () {
+    // get the land id form the user input;
+    const id = $('#exist-id').val();
+
+    // replace me :)
+  },
+
+
+  
+
+
+
+
+/*
+  get the owner of a land by it's own id;
+  @TODO       use the ABI instance that you got it to call the ownerOf function that's located in the smart contract;
+              call the ownerOf function in the smart contract and pass the user input and set the result as message;
+*/
+  ownerById: function () {
+    // get the land id form the user input;
+    const id = $('#owner-id').val();
+
+    // replace me :)
+  },
+
+
+
+/*
+  Transfer Ownership of a land from someone to someone else;
+  @TODO       use the ABI instance that you got it to call the transferFrom function that's located in the smart contract;
+              call the transferFrom function in the smart contract and pass the user input and confirm the transaction status as a message;
+*/
   transfer: function () {
+    // get the sender the receiver and the land id from the user input;
     const from = $('#transfer-from').val();
     const to = $('#transfer-to').val();
     const id = $('#transfer-id').val();
-    App.contractInstance.transfer(from, to, id);
-    
+
+    // replace me :)
 
   },
 
 
 
-
-  // safe Transfer Ownership of a land from someone to someone else
+/*
+  safe Transfer Ownership of a land from someone to someone else;
+  @TODO       use the ABI instance that you got it to call the safeTransferFrom function that's located in the smart contract;
+              call the safeTransferFrom function in the smart contract and pass the user input and confirm the transaction status as a message;
+*/
   safeTransfer: function () {
+    // get the sender the receiver and the land id from the user input;
     const from = $('#safe-transfer-from').val();
     const to = $('#safe-transfer-to').val();
     const id = $('#safe-transfer-id').val();
-    App.contractInstance.safeTransferFrom(from, to, id).then(done => {
-      console.log(done);
-    });
+
+    // replace me;
   },
 
 
 
 
   
-  // safe Transfer Ownership of a land from someone to someone else
-  
+/*
+  get the total lands count;
+  @TODO       use the ABI instance that you got it to call the safeTransferFrom function that's located in the smart contract;
+             call the safeTransferFrom function in the smart contract and pass the user input and confirm the transaction status as a message;
+  @HINT      you need to convert the type of the result to integer number;
+*/
   totalSupply: function () {
-    App.contractInstance.totalSupply().then(data => {
-      App.setMessage();
-      App.msg.text('there is ' + (data.toNumber()) + ' registerd lands');
-    });
+    
+    //replace me :)
   },
 
 };
 
+
+// calling the init functions; 
 $(function () {
   $(window).load(function () {
     App.init();
+    App.bindEvents();
   });
 });
