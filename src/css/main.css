@@ -36,6 +36,11 @@ html {
     padding-left: 220px;
 }
 
+.mt-5 {
+    margin-top: 50px;
+    z-index: 100;
+}
+
 #sidebar-wrapper {
     z-index: 1000;
     left: 220px;
