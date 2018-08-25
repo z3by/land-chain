@@ -15,38 +15,45 @@ $(document).ready(function () {
   let current = welcome;
   //handle toggle content;
   nav1.click(() => {
+    let LandsCount;
     current.hide();
     content1.show();
     current = content1;
-    $.getJSON('lands.json', (data) => {
-      $('.lands').html('');
-      for (const land of data) {
-        let li = document.createElement('li');
-        let location = document.createElement('h2');
-        let type = document.createElement('h4');
-        let area = document.createElement('h4');
-        let price = document.createElement('h5');
-        location.innerText = land.location;
-        type.innerText = land.type;
-        area.innerText = land.area + " yard";
-        price.innerText = land.price + " $";
-        li.appendChild(location);
-        li.appendChild(type);
-        li.appendChild(area);
-        li.appendChild(price);
-        li.classList.add('card');
-        $('.lands').append(li);
-      }
+
+    App.contractInstance.totalSupply().then(data => {
+      LandsCount = data.toNumber()
+
+      $.getJSON('lands.json', (data) => {
+        $('.lands').html('');
+        for (let i = 0; i <= LandsCount; i++) {
+          let land = data[i];
+          let li = document.createElement('li');
+          let location = document.createElement('h2');
+          let type = document.createElement('h4');
+          let area = document.createElement('h4');
+          let price = document.createElement('h5');
+          location.innerText = land.location;
+          type.innerText = land.type;
+          area.innerText = land.area + " yard";
+          price.innerText = land.price + " $";
+          li.appendChild(location);
+          li.appendChild(type);
+          li.appendChild(area);
+          li.appendChild(price);
+          li.classList.add('card');
+          $('.lands').append(li);
+        }
       })
+    });
   });
-  
+
   nav2.click(() => {
     current.hide();
     content2.show();
     current = content2;
 
   });
-  
+
   nav3.click(() => {
     current.hide();
     content3.show();

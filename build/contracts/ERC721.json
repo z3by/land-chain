@@ -462,7 +462,7 @@
         ],
         "contractDependencies": [
           194,
-          1240
+          1161
         ],
         "contractKind": "contract",
         "documentation": "@title ERC-721 Non-Fungible Token Standard, optional enumeration extension\r",
@@ -471,7 +471,7 @@
         "linearizedBaseContracts": [
           45,
           194,
-          1240
+          1161
         ],
         "name": "ERC721Enumerable",
         "nodeType": "ContractDefinition",
@@ -751,7 +751,7 @@
         ],
         "contractDependencies": [
           194,
-          1240
+          1161
         ],
         "contractKind": "contract",
         "documentation": "@title ERC-721 Non-Fungible Token Standard, optional metadata extension\r",
@@ -760,7 +760,7 @@
         "linearizedBaseContracts": [
           65,
           194,
-          1240
+          1161
         ],
         "name": "ERC721Metadata",
         "nodeType": "ContractDefinition",
@@ -1022,10 +1022,10 @@
           }
         ],
         "contractDependencies": [
-          194,
           45,
           65,
-          1240
+          194,
+          1161
         ],
         "contractKind": "contract",
         "documentation": "@title ERC-721 Non-Fungible Token Standard, full implementation interface\r",
@@ -1036,7 +1036,7 @@
           65,
           45,
           194,
-          1240
+          1161
         ],
         "name": "ERC721",
         "nodeType": "ContractDefinition",
@@ -1108,7 +1108,7 @@
         ],
         "contractDependencies": [
           194,
-          1240
+          1161
         ],
         "contractKind": "contract",
         "documentation": "@title ERC-721 Non-Fungible Token Standard, optional enumeration extension\r",
@@ -1117,7 +1117,7 @@
         "linearizedBaseContracts": [
           45,
           194,
-          1240
+          1161
         ],
         "name": "ERC721Enumerable",
         "nodeType": "ContractDefinition",
@@ -1397,7 +1397,7 @@
         ],
         "contractDependencies": [
           194,
-          1240
+          1161
         ],
         "contractKind": "contract",
         "documentation": "@title ERC-721 Non-Fungible Token Standard, optional metadata extension\r",
@@ -1406,7 +1406,7 @@
         "linearizedBaseContracts": [
           65,
           194,
-          1240
+          1161
         ],
         "name": "ERC721Metadata",
         "nodeType": "ContractDefinition",
@@ -1668,10 +1668,10 @@
           }
         ],
         "contractDependencies": [
-          194,
           45,
           65,
-          1240
+          194,
+          1161
         ],
         "contractKind": "contract",
         "documentation": "@title ERC-721 Non-Fungible Token Standard, full implementation interface\r",
@@ -1682,7 +1682,7 @@
           65,
           45,
           194,
-          1240
+          1161
         ],
         "name": "ERC721",
         "nodeType": "ContractDefinition",
@@ -1699,5 +1699,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-08-13T15:58:19.665Z"
+  "updatedAt": "2018-08-25T09:53:18.090Z"
 }

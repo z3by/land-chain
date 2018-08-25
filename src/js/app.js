@@ -38,7 +38,7 @@ App = {
       // Set the provider for our contract
       App.contracts.Land.setProvider(App.web3Provider);
 
-      App.createContractInstance();      
+      App.createContractInstance();
       return App.bindEvents();
 
     });
@@ -48,9 +48,9 @@ App = {
 
   createContractInstance() {
     App.contracts.Land.deployed()
-    .then(function (instance) {
-      App.contractInstance = instance;
-    });
+      .then(function (instance) {
+        App.contractInstance = instance;
+      });
 
   },
 
@@ -158,11 +158,11 @@ App = {
 
       }
     });
-    
+
   },
 
 
-  setMessage: function() {
+  setMessage: function () {
     App.msg.show();
     setTimeout(() => {
       App.msg.hide();
@@ -177,15 +177,15 @@ App = {
     const id = $('#owner-id').val();
 
     App.contractInstance.exists(id).then((exists) => {
-          if (exists) {
-            App.contractInstance.ownerOf(id).then((owner) => {
-              App.setMessage();
-              App.msg.text('the owner public key is ' + owner);
-            });
-          } else {
-            App.setMessage();
-            App.msg.text('no such land records');
-          }
+      if (exists) {
+        App.contractInstance.ownerOf(id).then((owner) => {
+          App.setMessage();
+          App.msg.text('the owner public key is ' + owner);
+        });
+      } else {
+        App.setMessage();
+        App.msg.text('no such land records');
+      }
     });
   },
 
@@ -198,7 +198,7 @@ App = {
     const to = $('#transfer-to').val();
     const id = $('#transfer-id').val();
     App.contractInstance.transfer(from, to, id);
-    
+
 
   },
 
@@ -218,9 +218,9 @@ App = {
 
 
 
-  
+
   // safe Transfer Ownership of a land from someone to someone else
-  
+
   totalSupply: function () {
     App.contractInstance.totalSupply().then(data => {
       App.setMessage();

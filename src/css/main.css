@@ -7,7 +7,7 @@ body {
 body,
 html {
     height: 100%;
-    background: linear-gradient(90deg, #ECE9E6, #E9E4F0 ) ;
+    background: linear-gradient(90deg, #ECE9E6, #E9E4F0);
     font-family: 'Comfortaa', cursive;
     text-align: center;
 }
@@ -119,23 +119,23 @@ html {
 
 .sidebar-nav li:first-child a {
     color: #fff;
-    background: linear-gradient(90deg, #c0c0aa, #1cefff ) ;
+    background: linear-gradient(90deg, #c0c0aa, #1cefff);
 }
 
 .sidebar-nav li:nth-child(2):before {
-    background: linear-gradient(90deg, #3494E6, #EC6EAD ) ;
+    background: linear-gradient(90deg, #3494E6, #EC6EAD);
 }
 
 .sidebar-nav li:nth-child(3):before {
-    background: linear-gradient(90deg, #00d2ff, #928DAB ) ;
+    background: linear-gradient(90deg, #00d2ff, #928DAB);
 }
 
 .sidebar-nav li:nth-child(4):before {
-    background: linear-gradient(90deg, #00c3ff, #ffff1c ) ;
+    background: linear-gradient(90deg, #00c3ff, #ffff1c);
 }
 
 .sidebar-nav li:nth-child(5):before {
-    background: linear-gradient(90deg, #3494E6, #EC6EAD ) ;
+    background: linear-gradient(90deg, #3494E6, #EC6EAD);
 }
 
 .sidebar-nav li:nth-child(6):before {
@@ -373,7 +373,7 @@ p {
 }
 
 .btn-primary {
-    background: linear-gradient(90deg, #00d2ff, #928DAB ) ;
+    background: linear-gradient(90deg, #00d2ff, #928DAB);
     color: white;
     font-size: 20px;
     border: 0;
@@ -405,9 +405,9 @@ p {
     position: fixed;
     left: 30%;
     top: 40%;
-    background: linear-gradient(90deg, #141E30, #243B55);
-    color: #f2f2f2;
-    border: #ec1b5a solid 8px;
+    background-color: #f2f2f2;
+    color: #ec1b5a;
+    box-shadow: 0 0 20px #555;
 }
 
 .landchain {
@@ -421,4 +421,3 @@ p {
 .lands h5 {
     color: #00d2ff;
 }
-
