@@ -14,7 +14,7 @@ function shouldBehaveLikeMintAndBurnERC721Token(accounts) {
   const creator = accounts[0];
   const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
 
-  xdescribe('like a mintable and burnable ERC721Token', function () {
+  describe('like a mintable and burnable ERC721Token', function () {
     beforeEach(async function () {
       await this.token.mint(creator, firstTokenId, {
         from: creator
@@ -24,12 +24,12 @@ function shouldBehaveLikeMintAndBurnERC721Token(accounts) {
       });
     });
 
-    xdescribe('mint', function () {
+    describe('mint', function () {
       const to = accounts[1];
       const tokenId = unknownTokenId;
       let logs = null;
 
-      xdescribe('when successful', function () {
+      describe('when successful', function () {
         beforeEach(async function () {
           const result = await this.token.mint(to, tokenId);
           logs = result.logs;
@@ -54,25 +54,25 @@ function shouldBehaveLikeMintAndBurnERC721Token(accounts) {
         });
       });
 
-      xdescribe('when the given owner address is the zero address', function () {
+      describe('when the given owner address is the zero address', function () {
         it('reverts', async function () {
           await assertRevert(this.token.mint(ZERO_ADDRESS, tokenId));
         });
       });
 
-      xdescribe('when the given token ID was already tracked by this contract', function () {
+      describe('when the given token ID was already tracked by this contract', function () {
         it('reverts', async function () {
           await assertRevert(this.token.mint(accounts[1], firstTokenId));
         });
       });
     });
 
-    xdescribe('burn', function () {
+    describe('burn', function () {
       const tokenId = firstTokenId;
       const sender = creator;
       let logs = null;
 
-      xdescribe('when successful', function () {
+      describe('when successful', function () {
         beforeEach(async function () {
           const result = await this.token.burn(tokenId, {
             from: sender
@@ -95,7 +95,7 @@ function shouldBehaveLikeMintAndBurnERC721Token(accounts) {
         });
       });
 
-      xdescribe('when there is a previous approval', function () {
+      describe('when there is a previous approval', function () {
         beforeEach(async function () {
           await this.token.approve(accounts[1], tokenId, {
             from: sender
@@ -112,7 +112,7 @@ function shouldBehaveLikeMintAndBurnERC721Token(accounts) {
         });
       });
 
-      xdescribe('when the given token ID was not tracked by this contract', function () {
+      describe('when the given token ID was not tracked by this contract', function () {
         it('reverts', async function () {
           await assertRevert(this.token.burn(unknownTokenId, {
             from: creator
